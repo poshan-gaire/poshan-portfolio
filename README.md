@@ -6,7 +6,7 @@ A clean, fast, and minimalist single-page developer portfolio built with HTML5 a
 
 ## 🛠️ Tech Stack
 - **Frontend:** HTML5, Tailwind CSS
-- **Hosting:** Netlify
+- **Hosting:** Global Edge Network / Serverless Static Hosting
 - **Domain:** Custom `.com.np` 
 - **Version Control:** Git & GitHub
 
