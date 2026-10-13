@@ -1,12 +1,32 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fbfbf9" />
   <meta name="description" content="Poshan Gaire — CSIT student, developer, and community builder from Nepal. Exploring web development, programming, and open educational resources." />
   <meta name="author" content="Poshan Gaire" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://poshangaire.com.np/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://poshangaire.com.np/" />
+  <meta property="og:title" content="Poshan Gaire — Developer & Community Builder" />
+  <meta property="og:description" content="Explore the projects, skills, and community work of Poshan Gaire, a CSIT student and developer from Nepal." />
+  <meta property="og:site_name" content="Poshan Gaire" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Poshan Gaire — Developer & Community Builder" />
+  <meta name="twitter:description" content="CSIT student, developer, and community builder from Nepal." />
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem('poshan-theme');
+        if (savedTheme === 'dark' || savedTheme === 'light') {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (_) {}
+    })();
+  </script>
 
   <title>Poshan Gaire — Developer & Community Builder</title>
 
@@ -139,6 +159,396 @@
       }
     }
   </style>
+
+  <style>
+    /* Developer/editor-inspired visual layer */
+    :root {
+      --dev-bg: #0b1118;
+      --dev-panel: #101923;
+      --dev-panel-2: #131e29;
+      --dev-line: rgba(168, 190, 204, .15);
+      --dev-text: #e7edf2;
+      --dev-muted: #a3b1bd;
+      --dev-green: #80d6a8;
+      --dev-blue: #8bb8ff;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      background:
+        radial-gradient(ellipse at 4% 0%, rgba(50, 125, 91, .13), transparent 33rem),
+        radial-gradient(ellipse at 100% 12%, rgba(73, 110, 178, .12), transparent 32rem),
+        var(--dev-bg);
+      color: var(--dev-text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(157, 179, 196, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(157, 179, 196, .045) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+    ::selection { background: rgba(128, 214, 168, .28); color: #f5fff8; }
+
+    header.sticky {
+      background: rgba(11, 17, 24, .82) !important;
+      border-color: var(--dev-line) !important;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    header nav > a:first-child {
+      color: var(--dev-text) !important;
+      letter-spacing: -.06em;
+    }
+    header nav > a:first-child::before {
+      content: ">";
+      color: var(--dev-green);
+      margin-right: 7px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 600;
+    }
+
+    .nav-link {
+      color: #a9b6c2 !important;
+      transition: color .2s ease, transform .2s ease;
+    }
+    .nav-link:hover { color: var(--dev-green) !important; transform: translateY(-1px); }
+    .nav-link::after {
+      background: linear-gradient(90deg, var(--dev-green), var(--dev-blue)) !important;
+      height: 2px !important;
+    }
+
+    h1, h2, h3 { color: var(--dev-text) !important; }
+    h1 { letter-spacing: -.055em !important; }
+    h1 span, .gradient-text {
+      color: transparent !important;
+      background: linear-gradient(105deg, #9ae6b8, #80d6a8 48%, #8bb8ff) !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+    }
+    p.text-gray-500, p.text-gray-400, .text-gray-400, .text-gray-500,
+    .text-muted, .text-gray-600 {
+      color: var(--dev-muted) !important;
+    }
+    .text-gray-300, .text-gray-200 { color: #cbd5df !important; }
+
+    /* A small code-style section marker */
+    section[id] { position: relative; }
+    section[id]::before {
+      content: attr(id);
+      position: absolute;
+      top: -1px;
+      right: 0;
+      transform: translateY(-50%);
+      padding: 4px 8px;
+      border: 1px solid var(--dev-line);
+      border-radius: 6px;
+      background: #0b1118;
+      color: #8193a3;
+      font: 10px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .04em;
+      opacity: .78;
+    }
+    #home::before { display: none; }
+    #projects, #about, #skills, #contact {
+      border-color: var(--dev-line) !important;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(20, 31, 42, .92), rgba(14, 22, 31, .9)) !important;
+      border: 1px solid var(--dev-line) !important;
+      border-radius: 14px !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .12), inset 0 1px 0 rgba(255,255,255,.025);
+      transition: border-color .24s ease, transform .24s ease, box-shadow .24s ease, background .24s ease;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--dev-green), var(--dev-blue), transparent 85%);
+      opacity: .35;
+    }
+    .project-card:hover {
+      border-color: rgba(128, 214, 168, .38) !important;
+      background: linear-gradient(145deg, rgba(25, 40, 50, .98), rgba(16, 27, 37, .98)) !important;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px rgba(0,0,0,.22), 0 0 0 1px rgba(128,214,168,.035);
+    }
+    .project-card p { color: #aab8c4 !important; }
+
+    .project-card .rounded-xl,
+    .project-card .rounded-lg {
+      background: rgba(128, 214, 168, .09) !important;
+      border: 1px solid rgba(128, 214, 168, .15);
+      color: var(--dev-green) !important;
+    }
+    .project-card .rounded-full {
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .project-card a:hover { color: var(--dev-green) !important; }
+
+    .tag, .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(143, 164, 181, .065) !important;
+      border: 1px solid rgba(143, 164, 181, .16) !important;
+      border-radius: 7px !important;
+      color: #b8c8d4 !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px !important;
+      letter-spacing: -.01em;
+      transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .tag::before, .skill-pill::before {
+      content: "·";
+      color: var(--dev-green);
+      margin-right: 5px;
+      font-weight: 800;
+    }
+    .tag:hover, .skill-pill:hover {
+      color: #e5fff0 !important;
+      border-color: rgba(128,214,168,.38) !important;
+      background: rgba(128,214,168,.09) !important;
+      transform: translateY(-2px);
+    }
+
+    .eyebrow {
+      color: var(--dev-green) !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .13em !important;
+    }
+    .eyebrow::before { content: "// "; color: #7b91a3; }
+    .timeline-line { border-color: var(--dev-line) !important; }
+    .timeline-dot {
+      background: var(--dev-green) !important;
+      box-shadow: 0 0 0 4px rgba(128,214,168,.09), 0 0 12px rgba(128,214,168,.35);
+    }
+
+    a[href="#projects"].inline-flex,
+    a[href="#contact"].inline-flex,
+    #contact a.inline-flex {
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+    }
+    a[href="#projects"].inline-flex {
+      background: linear-gradient(105deg, #367d61, #315f71) !important;
+      border: 1px solid rgba(128,214,168,.35);
+      box-shadow: 0 8px 24px rgba(41, 115, 83, .17);
+    }
+    a[href="#projects"].inline-flex:hover,
+    #contact a.inline-flex:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(43, 130, 91, .2);
+    }
+    a[href="#contact"].inline-flex,
+    #contact a.secondary-cta {
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--dev-line);
+      color: var(--dev-text) !important;
+    }
+
+    .social-link {
+      border: 1px solid transparent;
+      border-radius: 9px;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .social-link:hover {
+      color: var(--dev-green) !important;
+      background: rgba(128,214,168,.075);
+      border-color: rgba(128,214,168,.2);
+      transform: translateY(-2px);
+    }
+
+    #contact > div {
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(89, 126, 196, .13), transparent 42%),
+        linear-gradient(145deg, rgba(19, 30, 41, .95), rgba(13, 21, 30, .96)) !important;
+      border: 1px solid var(--dev-line) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 22px 55px rgba(0,0,0,.16);
+    }
+    footer { border-color: var(--dev-line) !important; }
+    footer p, footer a { color: #98a8b6 !important; }
+    footer a:hover { color: var(--dev-green) !important; }
+
+    .focus-ring:focus-visible, a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--dev-green);
+      outline-offset: 4px;
+    }
+    @media (max-width: 640px) {
+      section[id]::before { font-size: 9px; right: 1px; }
+      #home { padding-top: 4.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+
+
+  <style>
+    /* Theme tokens: light is the default; dark is an explicit user choice. */
+    :root, html[data-theme="light"] {
+      color-scheme: light;
+      --page-bg: #fbfbf9;
+      --panel-bg: #ffffff;
+      --panel-bg-soft: #f3f6f3;
+      --theme-text: #202521;
+      --theme-muted: #66716a;
+      --theme-line: #e0e6e1;
+      --theme-accent: #356b52;
+      --theme-accent-soft: #eaf2ec;
+      --theme-grid: rgba(54, 91, 70, .035);
+      --theme-shadow: 0 12px 30px rgba(28, 48, 35, .07);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --page-bg: #0b1118;
+      --panel-bg: #101923;
+      --panel-bg-soft: #131e29;
+      --theme-text: #e7edf2;
+      --theme-muted: #a3b1bd;
+      --theme-line: rgba(168, 190, 204, .15);
+      --theme-accent: #80d6a8;
+      --theme-accent-soft: rgba(128, 214, 168, .09);
+      --theme-grid: rgba(157, 179, 196, .045);
+      --theme-shadow: 0 18px 42px rgba(0, 0, 0, .2);
+    }
+    html, body { background-color: var(--page-bg); color: var(--theme-text); }
+    body {
+      background-image:
+        radial-gradient(ellipse at 4% 0%, color-mix(in srgb, var(--theme-accent) 9%, transparent), transparent 33rem),
+        linear-gradient(var(--theme-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--theme-grid) 1px, transparent 1px);
+      background-size: auto, 36px 36px, 36px 36px;
+      background-attachment: scroll, fixed, fixed;
+      transition: background-color .22s ease, color .22s ease;
+    }
+    header.sticky {
+      background: color-mix(in srgb, var(--page-bg) 88%, transparent) !important;
+      border-color: var(--theme-line) !important;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    header nav > a:first-child { color: var(--theme-text) !important; }
+    .nav-link { color: var(--theme-muted) !important; }
+    .nav-link:hover { color: var(--theme-accent) !important; }
+    .nav-link::after { background: var(--theme-accent) !important; }
+    h1, h2, h3 { color: var(--theme-text) !important; }
+    h1 span, .gradient-text {
+      color: var(--theme-accent) !important;
+      background: none !important;
+      -webkit-text-fill-color: currentColor;
+    }
+    .text-muted, .text-gray-500, .text-gray-400, .text-gray-600,
+    p.text-gray-500, p.text-gray-400 { color: var(--theme-muted) !important; }
+    .text-gray-300, .text-gray-200 { color: var(--theme-muted) !important; }
+    section[id]::before {
+      background: var(--page-bg) !important;
+      color: var(--theme-muted) !important;
+      border-color: var(--theme-line) !important;
+    }
+    #projects, #about, #skills, #contact, footer { border-color: var(--theme-line) !important; }
+    .project-card {
+      background: var(--panel-bg) !important;
+      border-color: var(--theme-line) !important;
+      box-shadow: var(--theme-shadow);
+    }
+    .project-card:hover {
+      background: var(--panel-bg-soft) !important;
+      border-color: color-mix(in srgb, var(--theme-accent) 55%, var(--theme-line)) !important;
+    }
+    .project-card p { color: var(--theme-muted) !important; }
+    .project-card .rounded-xl, .project-card .rounded-lg {
+      background: var(--theme-accent-soft) !important;
+      border-color: color-mix(in srgb, var(--theme-accent) 22%, transparent) !important;
+      color: var(--theme-accent) !important;
+    }
+    .project-card a:hover, footer a:hover { color: var(--theme-accent) !important; }
+    .tag, .skill-pill {
+      background: var(--panel-bg-soft) !important;
+      border-color: var(--theme-line) !important;
+      color: var(--theme-muted) !important;
+    }
+    .tag::before, .skill-pill::before, .eyebrow { color: var(--theme-accent) !important; }
+    .tag:hover, .skill-pill:hover {
+      background: var(--theme-accent-soft) !important;
+      border-color: color-mix(in srgb, var(--theme-accent) 45%, var(--theme-line)) !important;
+      color: var(--theme-text) !important;
+    }
+    .timeline-line { border-color: var(--theme-line) !important; }
+    .timeline-dot { background: var(--theme-accent) !important; }
+    a[href="#projects"].inline-flex {
+      background: var(--theme-accent) !important;
+      color: #fff !important;
+      border-color: transparent !important;
+    }
+    html[data-theme="dark"] a[href="#projects"].inline-flex { color: #092016 !important; }
+    a[href="#contact"].inline-flex, #contact a.secondary-cta {
+      background: var(--panel-bg) !important;
+      border-color: var(--theme-line) !important;
+      color: var(--theme-text) !important;
+    }
+    .social-link:hover { color: var(--theme-accent) !important; background: var(--theme-accent-soft); }
+    #contact > div {
+      background: var(--panel-bg) !important;
+      border-color: var(--theme-line) !important;
+      box-shadow: var(--theme-shadow);
+    }
+    footer p, footer a { color: var(--theme-muted) !important; }
+    .theme-toggle {
+      color: var(--theme-text);
+      background: var(--panel-bg);
+      border-color: var(--theme-line);
+      min-height: 38px;
+      white-space: nowrap;
+    }
+    .theme-toggle:hover { background: var(--theme-accent-soft); border-color: var(--theme-accent); }
+    .focus-ring:focus-visible, a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--theme-accent);
+      outline-offset: 4px;
+    }
+    @media (max-width: 520px) {
+      header nav { flex-wrap: wrap; row-gap: 12px; }
+      header nav > div { width: 100%; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+      header nav > div a, header nav > div button { font-size: 12px; }
+      .theme-toggle { padding: 7px 10px; }
+      section[id]::before { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html, body { transition: none !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Poshan Gaire",
+    "url": "https://poshangaire.com.np/",
+    "description": "CSIT student, developer, and community builder from Nepal.",
+    "address": { "@type": "PostalAddress", "addressCountry": "NP" },
+    "sameAs": [
+      "https://github.com/poshan-gaire",
+      "https://www.linkedin.com/in/poshan-gaire"
+    ]
+  }
+  </script>
 </head>
 
 <body class="font-sans">
@@ -167,6 +577,20 @@
         <a class="nav-link focus-ring hover:text-sage" href="#projects">Projects</a>
         <a class="nav-link focus-ring hover:text-sage" href="#about">About</a>
         <a class="nav-link focus-ring hover:text-sage" href="#skills">Skills</a>
+        <button
+          id="theme-toggle"
+          type="button"
+          class="theme-toggle focus-ring inline-flex items-center gap-2 rounded-full border px-3 py-2 font-medium transition-colors"
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+          title="Switch to dark theme"
+        >
+          <svg id="theme-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" width="16" height="16">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" />
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+          <span id="theme-label">Light</span>
+        </button>
         <a
           class="focus-ring rounded-full border border-sage px-3 py-2 font-medium text-sage transition-colors hover:bg-sage hover:text-white sm:px-4"
           href="#contact"
@@ -593,6 +1017,32 @@
   <script>
     // Keep the copyright year current.
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Light is the default. Remember the visitor's choice when storage is available.
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeLabel = document.getElementById("theme-label");
+    const themeIcon = document.getElementById("theme-icon");
+
+    function applyTheme(theme) {
+      const isDark = theme === "dark";
+      document.documentElement.dataset.theme = theme;
+      themeLabel.textContent = isDark ? "Dark" : "Light";
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+      themeToggle.setAttribute("title", isDark ? "Switch to light theme" : "Switch to dark theme");
+      themeIcon.innerHTML = isDark
+        ? '<path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.4 8.4 0 1 0 20.2 15.1Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />'
+        : '<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />';
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor) themeColor.setAttribute("content", isDark ? "#0b1118" : "#fbfbf9");
+    }
+
+    applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      try { localStorage.setItem("poshan-theme", nextTheme); } catch (_) {}
+    });
   </script>
 </body>
 </html>
